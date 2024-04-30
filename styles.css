@@ -1,0 +1,191 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    color: #0a0a23;
+}
+
+h1 {
+    max-width: 37.25rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem;
+}
+
+h1 .flex {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    /* use gap property instead of justify-content: space-between to create space between the elements of a grid, flex, or multi-column layout.*/
+}
+
+h1 .flex span:first-of-type {
+    font-size: 0.7em;
+}
+
+h1 .flex span:last-of-type {
+    font-size: 1.2em;
+}
+
+section {
+    border: 2px solid #d0d0d5;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+#years {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    color: #fff;
+    background-color: #0a0a23;
+    margin: 0 -2px;
+    padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0;
+    z-index: 999;
+    /* Adding position sticky moved the element into its own stack. 
+    To ensure your #years element does not get hidden by different stacks, 
+    add a z-index property set to 999*/
+}
+
+/*The span[class] syntax will target any span element that has a class attribute set, 
+regardless of the attribute's value.*/
+#years span[class] {
+    font-weight: bold;
+    width: 4.5rem;
+    text-align: right;
+}
+
+.table-wrap {
+    padding: 0 0.75rem 1.5rem 0.75rem;
+}
+
+/* The :not() pseudo-selector is used to target all elements that do not match the selector */
+/* This ensures that earlier rules for the span[class~="sr-only"] selector are not overwritten. */
+/* span:not(.sr-only) {
+    font-weight: normal;
+} */
+/* This is no longer needed after adding !important to sr-only properties*/
+
+
+/* This is no longer needed after adding specific styling to all span elements. */
+/* span {
+    font-weight: normal;
+} */
+
+table {
+    border-collapse: collapse;
+    /* allows cell borders to collapse into a single border instead of a border around each cell.*/
+    border: 0;
+    width: 100%;
+    position: relative;
+    margin-top: 3rem;
+}
+
+table caption {
+    color: #356eaf;
+    font-size: 1.3em;
+    font-weight: normal;
+    position: absolute;
+    top: -2.25rem;
+    left: 0.5rem;
+}
+
+tbody td {
+    width: 100vw;
+    /* Fills the viewport.*/
+    min-width: 4rem;
+    max-width: 4rem;
+    /* This approach ensures that the width is fixed,*/
+    /* whereas setting width specifically would allow the elements to shrink the container.*/
+}
+
+tbody th {
+    width: calc(100% - 12rem);
+    /* Give the th elements a width of the entire container minus 12rem. */
+}
+
+/* Target specifically tr elements with the total class. */
+tr[class="total"] {
+    border-bottom: 4px double #0a0a23;
+    font-weight: bold;
+}
+
+tr[class="total"] th {
+    text-align: left;
+    padding: 0.5rem 0 0.25rem 0.5rem;
+}
+
+/* The key difference between tr[class="total"] and tr.total is that 
+the first will select tr elements where the only class is total. 
+The second will select tr elements where the class includes total. */
+/* In this case both will work.*/
+tr.total td {
+    text-align: right;
+    padding: 0 0.25rem;
+}
+
+/* :nth-of-type() pseudo-selector is used to target specific elements 
+based on their order among siblings of the same type. */
+tr.total td:nth-of-type(3) {
+    padding-right: 0.5rem;
+}
+
+tr.total:hover {
+    background: #99c9ff;
+}
+
+td.current {
+    font-style: italic;
+}
+
+tr.data {
+    background-image: linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem);
+}
+
+tr.data th {
+    text-align: left;
+    padding-top: 0.3rem;
+    padding-left: 0.5rem;
+}
+
+tr.data th .description {
+    display: block;
+    font-style: italic;
+    font-weight: normal;
+    padding: 1rem 0 0.75rem;
+    margin-right: -13.5rem;
+}
+
+tr.data td {
+    vertical-align: top;
+    text-align: right;
+    ;
+    padding: 0.3rem 0.25rem 0;
+}
+
+tr.data td:last-of-type {
+    padding-right: 0.5rem;
+}
+
+
+
+/* A common set of properties used to ensure elements are completely hidden visually. */
+/* Will select any span element whose class includes sr-only */
+span[class~="sr-only"] {
+    /* the !important keyword ensures properties are always applied, regardless of order or specificity. */
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    width: 1px !important;
+    height: 1px !important;
+    /**/
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    /* overflow and white-space properties to prevent the text content from overflowing.*/
+    position: absolute !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    /* take hidden documents out of the document flow.*/
+}
